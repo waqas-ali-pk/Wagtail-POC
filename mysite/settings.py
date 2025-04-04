@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'wagtail.api.v2',
 
     'rest_framework',
+    'rest_framework_simplejwt',
 
     'polls',
     'main',
@@ -112,7 +113,19 @@ DATABASES = {
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.IsAdminUser',
+        # 'your_app.permissions.CustomPermission', # If you have a custom permission class
+    ],
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
 
 # Password validation
@@ -198,7 +211,7 @@ LOGGING = {
 
 WAGTAIL_SITE_NAME = 'My Project - POC'
 
-WAGTAILADMIN_BASE_URL = 'http://example.com'
+WAGTAILADMIN_BASE_URL = 'http://example.com' # TODO: ?
 
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 

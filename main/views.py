@@ -1,7 +1,8 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import permissions, viewsets
 
-from .serializers import GroupSerializer, UserSerializer
+from .serializers import GroupSerializer, UserSerializer, PostCategorySerializer, PostPageSerializer
+from .models import PostCategory, PostPage
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -20,3 +21,20 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all().order_by('name')
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    
+class PostCategoryViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows post category to be viewed or edited.
+    """
+    queryset = PostCategory.objects.all()
+    serializer_class = PostCategorySerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+class PostPageViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows post page to be viewed or edited.
+    """
+    queryset = PostPage.objects.all()
+    serializer_class = PostPageSerializer
+    # permission_classes = [permissions.IsAuthenticated]

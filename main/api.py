@@ -1,3 +1,6 @@
+from rest_framework.renderers import JSONRenderer
+from rest_framework.permissions import IsAuthenticated
+
 from wagtail.api.v2.views import PagesAPIViewSet
 from wagtail.api.v2.router import WagtailAPIRouter
 from wagtail.images.api.v2.views import ImagesAPIViewSet
@@ -10,6 +13,18 @@ api_router = WagtailAPIRouter('wagtailapi')
 # The first parameter is the name of the endpoint (such as pages, images). This
 # is used in the URL of the endpoint
 # The second parameter is the endpoint class that handles the requests
+
 api_router.register_endpoint('pages', PagesAPIViewSet)
 api_router.register_endpoint('images', ImagesAPIViewSet)
 api_router.register_endpoint('documents', DocumentsAPIViewSet)
+
+
+# class CustomPagesAPIViewSet(PagesAPIViewSet):
+#     model = BlogPage
+#     # renderer_classes = [JSONRenderer]
+#     name = "pages"
+#     # permission_classes = (IsAuthenticated,)
+
+
+
+# api_router.register_endpoint("pages", CustomPagesAPIViewSet)

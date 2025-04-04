@@ -12,3 +12,5 @@
 ## Wagtail APIs (headless, to be consumed on any platform/device)
 ```http://127.0.0.1:8000/api/v2/pages/```
 
+## include additional fields on pages listing.
+```http://localhost:8000/api/v2/pages/?type=main.PostPage&fields=body,post_image,tags,category```

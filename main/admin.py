@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import PostCategory, PostPage
 
-# Register your models here.
+
+admin.site.register(PostCategory)
+admin.site.register(PostPage)
